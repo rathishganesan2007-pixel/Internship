@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALEX MORGAN — PRINCIPAL UI ENGINEER & INTERACTIVE ARCHITECT</title>
+    
+    <meta name="description" content="The interactive portfolio of Alex Morgan, a master-level UI Engineer and Interactive Digital Architect crafting high-end, pixel-perfect, accessible web products.">
+    <meta name="keywords" content="Creative Frontend Developer, UI Engineer, WebGL Canvas, Advanced CSS Animations, Accessibility Architect, Awwwards Developer Portfolio">
+    <meta name="author" content="Alex Morgan">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ALEX MORGAN — PRINCIPAL UI ENGINEER & INTERACTIVE ARCHITECT">
+    <meta property="og:description" content="Experience the intersection of high-fidelity creative motion design and rigorous semantic web infrastructure.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=630&q=80">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           1. CREATIVE DESIGN SYSTEM ENGINE TOKENS
+           ========================================================================== */
+        :root {
+            --color-dark-pure: #050508;
+            --color-dark-surface: #0e0f14;
+            --color-dark-elevated: #161822;
+            
+            /* High-Contrast Electric Neon Palettes */
+            --color-neon-cyan: #00f0ff;
+            --color-neon-purple: #bd00ff;
+            --color-neon-magenta: #ff007a;
+            --color-neon-green: #39ff14;
+            
+            --text-ultra: #ffffff;
+            --text-body: #a0a5c0;
+            --text-dark-muted: #4e526e;
+            
+            /* Advanced Fluid Typography Engines */
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-interface: 'Plus Jakarta Sans', sans-serif;
+            
+            /* Premium Fluid Micro-Timing Physics */
+            --cubic-creative: cubic-bezier(0.85, 0, 0.15, 1);
+            --cubic-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            --transition-fluid: all 0.6s var(--cubic-creative);
+            --transition-snappy: all 0.25s ease;
+            
+            --focus-glow: 0 0 0 3px rgba(0, 240, 255, 0.5);
+        }
+
+        /* ==========================================================================
+           2. COMPREHENSIVE RECONSTRUCTIVE RESET & GLOBAL FRAMEWORK
+           ========================================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: var(--color-dark-pure);
+        }
+
+        body {
+            background-color: var(--color-dark-pure);
+            color: var(--text-body);
+            font-family: var(--font-interface);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Ultimate WCAG 2.2 Compliant Keyboard Navigation Focus Matrix */
+        *:focus-visible {
+            outline: 2px dashed var(--color-neon-cyan);
+            outline-offset: 6px;
+            box-shadow: var(--focus-glow);
+        }
+
+        /* Hidden Accessibility Entry Framework */
+        .accessibility-skip-relay {
+            position: absolute;
+            top: -120px;
+            left: 2rem;
+            background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-purple));
+            color: var(--color-dark-pure);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            z-index: 99999;
+            text-decoration: none;
+            transition: top 0.4s var(--cubic-creative);
+        }
+
+        .accessibility-skip-relay:focus {
+            top: 2rem;
+        }
+
+        ul[role="list"] { list-style: none; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Custom Interactive Creative Scrollbar Ecosystem */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--color-dark-pure); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--color-dark-pure), var(--color-dark-elevated), var(--color-dark-pure));
+            border: 2px solid var(--color-dark-pure);
+            border-radius: 100px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-neon-cyan); }
+
+        /* ==========================================================================
+           3. BACKGROUND PERFORMANCE CANVAS & AMBIENT SHADERS
+           ========================================================================== */
+        .interactive-fx-layer {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        #particle-matrix-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            opacity: 0.45;
+        }
+
+        /* Organic Analog Film Grain Noise Overlay Scheme */
+        .analog-noise-shader {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3e%3cfilter id='noiseFilter'%3e%3cturbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3e%3c/svg%3e");
+        }
+
+        /* ==========================================================================
+           4. LAYOUT SYSTEM & KINETIC TYPOGRAPHY PATTERNS
+           ========================================================================== */
+        .master-grid-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .viewport-section {
+            padding: 10rem 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Creative Editorial Typographic Headers */
+        .kinetic-header {
+            margin-bottom: 6rem;
+            position: relative;
+        }
+
+        .header-index-tag {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-neon-cyan);
+            letter-spacing: 0.3em;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .header-title-mask {
+            overflow: hidden;
+            display: block;
+        }
+
+        .header-interactive-text {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            font-weight: 700;
+            line-height: 0.95;
+            text-transform: uppercase;
+            color: var(--text-ultra);
+            letter-spacing: -0.03em;
+        }
+
+        /* ==========================================================================
+           5. FIXED MASTER NAVIGATION GLASS DOCK
+           ========================================================================== */
+        .creative-nav-dock {
+            position: fixed;
+            top: 2rem;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition-fluid);
+        }
+
+        .nav-dock-wrapper {
+            max-width: 1520px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            background: rgba(14, 15, 20, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 100px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: var(--transition-fluid);
+        }
+
+        .creative-nav-dock.dock-condensed .nav-dock-wrapper {
+            max-width: 1000px;
+            background: rgba(5, 5, 8, 0.85);
+            border-color: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .dock-brand-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-ultra);
+            letter-spacing: -0.02em;
+        }
+
+        .dock-brand-logo span {
+            color: var(--color-neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        .dock-menu-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .dock-anchor {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-body);
+            padding: 0.6rem 1.4rem;
+            border-radius: 100px;
+            transition: var(--transition-snappy);
+            position: relative;
+        }
+
+        .dock-anchor:hover,
+        .dock-anchor.route-active {
+            color: var(--text-ultra);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .dock-anchor::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-purple));
+            transition: var(--transition-fluid);
+            transform: translateX(-50%);
+        }
+
+        .dock-anchor.route-active::after { width: 40%; }
+
+        /* Adaptive Hamburger Framework Trigger */
+        .dock-burger-trigger {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+
+        .dock-burger-trigger .burger-line {
+            position: absolute;
+            left: 10px;
+            width: 20px;
+            height: 2px;
+            background: var(--text-ultra);
+            transition: var(--transition-snappy);
+        }
+        .dock-burger-trigger .line-1 { top: 15px; }
+        .dock-burger-trigger .line-2 { bottom: 15px; }
+
+        /* ==========================================================================
+           6. INTERACTIVE VIEW segment 1: HERO CONCEPT ENGINE
+           ========================================================================== */
+        .hero-viewport-matrix {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            padding-top: 80px;
+        }
+
+        .hero-kinetic-title-stack {
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-giant-text {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 9vw, 9rem);
+            font-weight: 700;
+            line-height: 0.85;
+            text-transform: uppercase;
+            color: var(--text-ultra);
+            letter-spacing: -0.04em;
+        }
+
+        .hero-giant-text.outline-gradient {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+            background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-purple), var(--color-neon-magenta));
+            -webkit-background-clip: text;
+            background-size: 200% auto;
+            animation: textFlowShimmer 8s linear infinite;
+        }
+
+        @keyframes textFlowShimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .hero-editorial-sub-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .hero-abstract-paragraph {
+            font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+            color: var(--text-body);
+            font-weight: 300;
+            line-height: 1.5;
+            max-width: 700px;
+        }
+
+        /* High End Interactive Call-to-Action Trigger System */
+        .magnetic-btn-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .magnetic-action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 180px;
+            height: 180px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-ultra);
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition-fluid);
+            overflow: hidden;
+        }
+
+        .btn-fluid-morph-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, var(--color-neon-purple), var(--color-neon-magenta));
+            transform: scale(0) translateZ(0);
+            border-radius: 50%;
+            transition: transform 0.6s var(--cubic-creative);
+            z-index: -1;
+        }
+
+        .magnetic-action-btn:hover {
+            border-color: transparent;
+            color: var(--color-dark-pure);
+            box-shadow: 0 0 50px rgba(189, 0, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .magnetic-action-btn:hover .btn-fluid-morph-bg {
+            transform: scale(1) translateZ(0);
+            border-radius: 0;
+        }
+
+        /* ==========================================================================
+           7. INTERACTIVE VIEW segment 2: ASYMMETRIC PORTFOLIO BENTO GRID
+           ========================================================================== */
+        .bento-showcase-matrix {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2.5rem;
+        }
+
+        .bento-showcase-node {
+            background: var(--color-dark-surface);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition-fluid);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Custom Asymmetric Span Layout System */
+        .bento-span-7 { grid-column: span 7; }
+        .bento-span-5 { grid-column: span 5; }
+        .bento-span-12 { grid-column: span 12; }
+
+        .bento-media-container {
+            width: 100%;
+            height: 440px;
+            overflow: hidden;
+            position: relative;
+            background: #020204;
+        }
+
+        .bento-media-source {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            filter: grayscale(40%);
+            transition: transform 1.2s var(--cubic-creative), filter 0.6s ease;
+        }
+
+        .bento-glare-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 30%, rgba(14, 15, 20, 0.95) 100%);
+            z-index: 2;
+        }
+
+        .bento-floating-tags {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: flex;
+            gap: 0.75rem;
+            z-index: 5;
+        }
+
+        .micro-tag-token {
+            background: rgba(5, 5, 8, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-ultra);
+        }
+
+        .bento-content-panel {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            position: relative;
+            z-index: 3;
+            background: linear-gradient(180deg, var(--color-dark-surface) 0%, var(--color-dark-pure) 100%);
+        }
+
+        .bento-node-title {
+            font-family: var(--font-display);
+            font-size: 2.25rem;
+            color: var(--text-ultra);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .bento-node-summary {
+            font-size: 1.1rem;
+            color: var(--text-body);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 90%;
+        }
+
+        .bento-tech-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .bento-tech-pill {
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            color: var(--text-body);
+        }
+
+        /* High-End Structural Node Hover Reactions */
+        .bento-showcase-node:hover {
+            transform: translateY(-12px);
+            border-color: rgba(0, 240, 255, 0.25);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.7), 0 0 100px rgba(0, 240, 255, 0.03);
+        }
+
+        .bento-showcase-node:hover .bento-media-source {
+            transform: scale(1.06) rotate(0.5deg);
+            opacity: 0.9;
+            filter: grayscale(0%);
+        }
+
+        .bento-interactive-trigger {
+            position: absolute;
+            right: 3rem;
+            bottom: 3rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--color-dark-elevated);
+            border: 1px solid rgba(255,255,255,0.05);
+            display: grid;
+            place-items: center;
+            color: var(--text-ultra);
+            transition: var(--transition-fluid);
+        }
+
+        .bento-showcase-node:hover .bento-interactive-trigger {
+            background: var(--color-neon-cyan);
+            color: var(--color-dark-pure);
+            transform: rotate(-45deg);
+            box-shadow: 0 0 20px var(--color-neon-cyan);
+        }
+
+        /* ==========================================================================
+           8. INTERACTIVE VIEW segment 3: EXPERIENTIAL CHRONOLOGY ACCORDION
+           ========================================================================== */
+        .experience-stack-matrix {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .experience-strip-row {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem 0;
+            display: grid;
+            grid-template-columns: 1.5fr 3fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            transition: var(--transition-fluid);
+            position: relative;
+        }
+
+        .experience-strip-row::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-purple));
+            transition: var(--transition-fluid);
+        }
+
+        .strip-timeline {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--text-dark-muted);
+            font-weight: 500;
+            transition: var(--transition-snappy);
+        }
+
+        .strip-core-identity h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--text-ultra);
+            font-weight: 700;
+        }
+
+        .strip-core-identity .strip-brand-meta {
+            font-size: 1.05rem;
+            color: var(--color-neon-purple);
+            font-weight: 600;
+            margin-top: 0.25rem;
+            display: inline-block;
+        }
+
+        .strip-narrative-panel {
+            color: var(--text-body);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* Strip Hover Interactions */
+        .experience-strip-row:hover {
+            padding-left: 2rem;
+            padding-right: 2rem;
+            background: rgba(255,255,255,0.01);
+        }
+
+        .experience-strip-row:hover::before { width: 100%; }
+        .experience-strip-row:hover .strip-timeline { color: var(--color-neon-cyan); }
+
+        /* ==========================================================================
+           9. INTERACTIVE VIEW segment 4: HIGH ARCHITECTURE LAB FORM GATEWAY
+           ========================================================================== */
+        .contact-workspace-split {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .contact-editorial-billboard {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .billboard-giant-callout {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1.1;
+            color: var(--text-ultra);
+            font-weight: 700;
+        }
+
+        .billboard-giant-callout span {
+            color: var(--color-neon-magenta);
+        }
+
+        .anchor-card-relay {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+            background: var(--color-dark-surface);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            transition: var(--transition-fluid);
+        }
+
+        .anchor-card-relay:hover {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 0, 122, 0.3);
+            transform: translateX(10px);
+        }
+
+        .relay-meta .relay-header {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dark-muted);
+            margin-bottom: 0.2rem;
+        }
+
+        .relay-meta .relay-payload {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-ultra);
+            font-family: var(--font-display);
+        }
+
+        /* High Level Form Control Blueprint Engine */
+        .secure-form-hull {
+            background: linear-gradient(135deg, var(--color-dark-surface) 0%, #09090d 100%);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 32px;
+            padding: 4rem;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .form-feedback-alert-strip {
+            display: none;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(57, 255, 20, 0.08);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            border-radius: 12px;
+            color: #79ff62;
+            font-weight: 500;
+            margin-bottom: 3rem;
+            animation: formAlertReveal 0.5s var(--cubic-creative) forwards;
+        }
+
+        @keyframes formAlertReveal {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .field-harness-group {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .field-harness-group input,
+        .field-harness-group textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--text-dark-muted);
+            padding: 1rem 0;
+            font-family: var(--font-interface);
+            font-size: 1.1rem;
+            color: var(--text-ultra);
+            transition: var(--transition-snappy);
+        }
+
+        .field-harness-group label {
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            font-size: 1.1rem;
+            color: var(--text-body);
+            pointer-events: none;
+            transition: var(--transition-fluid);
+        }
+
+        /* Dynamic Floated Label CSS State Patterns */
+        .field-harness-group input:focus ~ label,
+        .field-harness-group input:valid ~ label,
+        .field-harness-group textarea:focus ~ label,
+        .field-harness-group textarea:valid ~ label {
+            top: -1.5rem;
+            font-size: 0.85rem;
+            color: var(--color-neon-cyan);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .field-harness-group input:focus,
+        .field-harness-group textarea:focus {
+            outline: none;
+            border-bottom-color: var(--color-neon-cyan);
+        }
+
+        .field-harness-group .field-focus-track-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-purple));
+            transition: var(--transition-fluid);
+        }
+
+        .field-harness-group input:focus ~ .field-focus-track-line,
+        .field-harness-group textarea:focus ~ .field-focus-track-line {
+            width: 100%;
+        }
+
+        .field-harness-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submission-button {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--text-ultra);
+            border: none;
+            border-radius: 12px;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-dark-pure);
+            cursor: pointer;
+            transition: var(--transition-fluid);
+        }
+
+        .form-submission-button:hover {
+            background: var(--color-neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           10. MASTER ECOSYSTEM BASE FOOTER SYSTEM
+           ========================================================================== */
+        .master-app-footer {
+            background: #020204;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            padding: 5rem 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-flex-bridge {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-copyright-string {
+            font-size: 0.95rem;
+            color: var(--text-dark-muted);
+        }
+
+        .footer-social-vault {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .footer-social-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-body);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition-snappy);
+        }
+
+        .footer-social-link:hover { color: var(--color-neon-cyan); }
+
+        /* ==========================================================================
+           11. MASTER HARDWARE VIEW TRANSITION MASKS
+           ========================================================================== */
+        .view-frame-activation {
+            animation: viewTransitionWipe 1s var(--cubic-creative) forwards;
+        }
+
+        @keyframes viewTransitionWipe {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.98);
+                filter: blur(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .view-hidden-state { display: none !important; }
+
+        /* Reduced Motion Accessibility Strategy Engine System Override */
+        @media (prefers-reduced-motion: reduce) {
+            .view-frame-activation { animation: none !important; }
+            .bento-showcase-node:hover { transform: none !important; }
+            .bento-media-source { transform: none !important; }
+            .experience-strip-row:hover { padding-left: 0 !important; }
+            #particle-matrix-canvas { display: none !important; }
+            .hero-giant-text.outline-gradient { animation: none !important; color: var(--color-neon-cyan) !important; }
+        }
+
+        /* ==========================================================================
+           12. RIGOROUS RESPONSIVE ARCHITECTURE BREAKPOINTS
+           ========================================================================== */
+        @media (max-width: 1200px) {
+            .master-grid-container { padding: 0 2.5rem; }
+            .hero-editorial-sub-panel { grid-template-columns: 1fr; gap: 3rem; }
+            .bento-span-7, .bento-span-5 { grid-column: span 12; }
+            .bento-media-container { height: 360px; }
+            .experience-strip-row { grid-template-columns: 1fr; gap: 1rem; }
+            .strip-timeline { text-align: left; }
+            .contact-workspace-split { grid-template-columns: 1fr; gap: 4rem; }
+        }
+
+        @media (max-width: 768px) {
+            .creative-nav-dock { top: 0; }
+            .nav-dock-wrapper { border-radius: 0; border-width: 0 0 1px 0; padding: 0 1.5rem; }
+            .dock-menu-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--color-dark-pure);
+                flex-direction: column;
+                padding: 4rem 2rem;
+                gap: 2rem;
+                transition: left 0.5s var(--cubic-creative);
+                z-index: 999;
+            }
+            .dock-menu-links.drawer-open { left: 0; }
+            .dock-anchor { font-size: 1.75rem; width: 100%; display: block; font-family: var(--font-display); }
+            .dock-burger-trigger { display: block; }
+            
+            /* Responsive Hamburger States */
+            .dock-burger-trigger.active-state .line-1 { transform: translateY(4px) rotate(45deg); }
+            .dock-burger-trigger.active-state .line-2 { transform: translateY(-4px) rotate(-45deg); }
+
+            .master-grid-container { padding: 0 1.5rem; }
+            .viewport-section { padding: 6rem 0; }
+            .bento-content-panel { padding: 2rem; }
+            .secure-form-hull { padding: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#master-core-app-runtime" class="accessibility-skip-relay">Skip Navigation Routines</a>
+
+    <div class="interactive-fx-layer" aria-hidden="true">
+        <canvas id="particle-matrix-canvas"></canvas>
+    </div>
+    <div class="analog-noise-shader" aria-hidden="true"></div>
+
+    <header class="creative-nav-dock" id="master-dock-element">
+        <div class="nav-dock-wrapper">
+            <a href="#home" class="dock-brand-logo" aria-label="Alex Morgan Creative Home Space Anchor">
+                MORGAN<span>.</span>ARCH
+            </a>
+            
+            <button class="dock-burger-trigger" id="dock-hamburger-trigger" aria-expanded="false" aria-controls="primary-nav-links-vault" aria-label="Toggle Adaptive Navigation Environment Layer">
+                <span class="burger-line line-1"></span>
+                <span class="burger-line line-2"></span>
+            </button>
+
+            <nav id="primary-nav-links-vault" aria-label="Global Core Segment Route Operations">
+                <ul class="dock-menu-links" role="list">
+                    <li><a href="#home" class="dock-anchor route-active" aria-current="page">Core Index</a></li>
+                    <li><a href="#projects" class="dock-anchor">Production Bento</a></li>
+                    <li><a href="#experience" class="dock-anchor">Chronology</a></li>
+                    <li><a href="#contact" class="dock-anchor">Lab Gateway</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="master-core-app-runtime" tabindex="-1">
+        <div class="master-grid-container">
+
+            <section id="home" class="page-segment-viewport-layer hero-viewport-matrix view-frame-activation" aria-labelledby="primary-creative-hero-headline">
+                <div class="hero-kinetic-title-stack">
+                    <h1 class="hero-giant-text" id="primary-creative-hero-headline">DESIGN.</h1>
+                    <h2 class="hero-giant-text outline-gradient">ENGINEER.</h2>
+                    <h2 class="hero-giant-text">SCALE.</h2>
+                </div>
+                
+                <div class="hero-editorial-sub-panel">
+                    <p class="hero-abstract-paragraph">
+                        Alex Morgan is a principal interactive technologist formulating avant-garde digital products. Merging mathematical code precision with radical sensory aesthetics. 
+                    </p>
+                    <div style="text-align: right; width: 100%;">
+                        <div class="magnetic-btn-wrapper">
+                            <a href="#projects" class="magnetic-action-btn" id="interactive-magnetic-cta">
+                                <span class="btn-fluid-morph-bg"></span>
+                                Enter Lab
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="page-segment-viewport-layer view-hidden-state viewport-section" aria-labelledby="bento-matrix-headline">
+                <div class="kinetic-header">
+                    <span class="header-index-tag">// System Index 01</span>
+                    <div class="header-title-mask">
+                        <h2 class="header-interactive-text" id="bento-matrix-headline">Selected Craft</h2>
+                    </div>
+                </div>
+
+                <div class="bento-showcase-matrix">
+                    
+                    <article class="bento-showcase-node bento-span-7">
+                        <div class="bento-media-container">
+                            <div class="bento-floating-tags">
+                                <span class="micro-tag-token">Interactive WebGL</span>
+                                <span class="micro-tag-token">FinTech Enterprise</span>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" alt="Dark data analytics visualization graph pipeline showing neon matrix nodes" class="bento-media-source" loading="lazy">
+                            <div class="bento-glare-overlay"></div>
+                        </div>
+                        <div class="bento-content-panel">
+                            <h3 class="bento-node-title">Quantum Asset Matrix</h3>
+                            <p class="bento-node-summary">A real-time sub-millisecond data terminal processing distributed streaming protocols with robust accessibility layers built natively inside the tree grid context.</p>
+                            <div class="bento-tech-row">
+                                <span class="bento-tech-pill">TypeScript Core</span>
+                                <span class="bento-tech-pill">WebAssembly Modules</span>
+                                <span class="bento-tech-pill">WAI-ARIA Engine</span>
+                            </div>
+                            <a href="#" class="bento-interactive-trigger" aria-label="Deep-dive asset study blueprint record for Quantum Asset Matrix"><span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </article>
+
+                    <article class="bento-showcase-node bento-span-5">
+                        <div class="bento-media-container">
+                            <div class="bento-floating-tags">
+                                <span class="micro-tag-token">E-Commerce Architecture</span>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1000&q=80" alt="Luxury minimal geometric retail display presentation panel layout illustration" class="bento-media-source" loading="lazy">
+                            <div class="bento-glare-overlay"></div>
+                        </div>
+                        <div class="bento-content-panel">
+                            <h3 class="bento-node-title">Aether Apparel</h3>
+                            <p class="bento-node-summary">Immersive luxury e-commerce engine operating completely on headless GraphQL node arrays yielding lightning checkout speeds worldwide.</p>
+                            <div class="bento-tech-row">
+                                <span class="bento-tech-pill">NextJS Node</span>
+                                <span class="bento-tech-pill">GraphQL Subgraph</span>
+                                <span class="bento-tech-pill">CSS Grid Modules</span>
+                            </div>
+                            <a href="#" class="bento-interactive-trigger" aria-label="Deep-dive asset study blueprint record for Aether Apparel"><span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section id="experience" class="page-segment-viewport-layer view-hidden-state viewport-section" aria-labelledby="chronology-matrix-headline">
+                <div class="kinetic-header">
+                    <span class="header-index-tag">// System Index 02</span>
+                    <div class="header-title-mask">
+                        <h2 class="header-interactive-text" id="chronology-matrix-headline">Chronology</h2>
+                    </div>
+                </div>
+
+                <div class="experience-stack-matrix">
+                    
+                    <div class="experience-strip-row">
+                        <div class="strip-timeline">2024 — GLOBAL PRESENT</div>
+                        <div class="strip-core-identity">
+                            <h3>Principal UI Architect</h3>
+                            <span class="strip-brand-meta">Nexus Interactive Systems Group</span>
+                        </div>
+                        <div class="strip-narrative-panel">
+                            Defines cross-organizational enterprise component systems engineering paradigms. Drives frontend standard rules minimizing paint loop delays across web application products.
+                        </div>
+                    </div>
+
+                    <div class="experience-strip-row">
+                        <div class="strip-timeline">2022 — 2024</div>
+                        <div class="strip-core-identity">
+                            <h3>Senior UI Engineer Specialist</h3>
+                            <span class="strip-brand-meta">Aura Sensory Interfaces Corporation</span>
+                        </div>
+                        <div class="strip-narrative-panel">
+                            Engineered responsive telemetry layouts achieving clean perfect scores across vital operational speed evaluation metrics and accessibility compliance checks.
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="contact" class="page-segment-viewport-layer view-hidden-state viewport-section" aria-labelledby="lab-gateway-form-headline">
+                <div class="kinetic-header">
+                    <span class="header-index-tag">// System Index 03</span>
+                    <div class="header-title-mask">
+                        <h2 class="header-interactive-text" id="lab-gateway-form-headline">Lab Gateway</h2>
+                    </div>
+                </div>
+
+                <div class="contact-workspace-split">
+                    
+                    <div class="contact-editorial-billboard">
+                        <p class="billboard-giant-callout"> Have an architectural challenge scaling past threshold limits? <span>Let's sync up protocols.</span></p>
+                        
+                        <a href="mailto:alex@morgan.architecture" class="anchor-card-relay" aria-label="Direct message protocol bridge link via corporate mailing system channels">
+                            <div class="relay-meta">
+                                <div class="relay-header">Secure Interface Terminal Mail</div>
+                                <div class="relay-payload">alex@morgan.architecture</div>
+                            </div>
+                            <div style="font-size: 1.5rem; color: var(--color-neon-magenta);">&rarr;</div>
+                        </a>
+                    </div>
+
+                    <div class="secure-form-hull">
+                        
+                        <div class="form-feedback-alert-strip" id="form-success-relay-notification-box" role="status" aria-live="polite">
+                            <span aria-hidden="true">&#9889;</span> Stream packet validation completed. Secure transmission established successfully.
+                        </div>
+
+                        <form action="#" method="POST" id="creative-lab-telemetry-form">
+                            
+                            <div class="field-harness-group">
+                                <input type="text" id="form-identity-token" required aria-required="true" autocomplete="name">
+                                <div class="field-focus-track-line"></div>
+                                <label for="form-identity-token">Entity / Representative Name</label>
+                            </div>
+
+                            <div class="field-harness-group">
+                                <input type="email" id="form-communication-gateway" required aria-required="true" autocomplete="email">
+                                <div class="field-focus-track-line"></div>
+                                <label for="form-communication-gateway">Secure Communication Gateway Address</label>
+                            </div>
+
+                            <div class="field-harness-group">
+                                <textarea id="form-payload-matrix" required aria-required="true"></textarea>
+                                <div class="field-focus-track-line"></div>
+                                <label for="form-payload-matrix">Project Parameters / Technical Brief Outline</label>
+                            </div>
+
+                            <button type="submit" class="form-submission-button">
+                                Fire Telemetry Envelope
+                            </button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="master-app-footer">
+        <div class="master-grid-container footer-flex-bridge">
+            <div class="footer-copyright-string">
+                <p>&copy; 2026 Alex Morgan Architecture Framework. Validated clean semantic layout build tree specifications. All rights reserved.</p>
+            </div>
+            <nav class="footer-social-vault" aria-label="Secondary Directory Anchor Links">
+                <a href="#" class="footer-social-link">Awwwards Ledger</a>
+                <a href="#" class="footer-social-link">GitHub Master Repository</a>
+                <a href="#" class="footer-social-link">LinkedIn Verification Terminal</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // --- DOM Elements Cache Architecture ---
+            const dockWrapper = document.getElementById("master-dock-element");
+            const burgerTrigger = document.getElementById("dock-hamburger-trigger");
+            const menuLinksVault = document.querySelector(".dock-menu-links");
+            const pageSegmentViews = document.querySelectorAll(".page-segment-viewport-layer");
+            const labFormRoot = document.getElementById("creative-lab-telemetry-form");
+            const formFeedbackStrip = document.getElementById("form-success-relay-notification-box");
+            const particleCanvas = document.getElementById("particle-matrix-canvas");
+
+            // ==========================================================================
+            // A. PERFORMANCE CANVAS MATRIX SYSTEM (High Creative Impact Background)
+            // ==========================================================================
+            const ctx = particleCanvas.getContext("2d");
+            let particlesArray = [];
+            let mouseCoordinates = { x: null, y: null, radius: 150 };
+
+            function resizeCanvasToViewport() {
+                particleCanvas.width = window.innerWidth;
+                particleCanvas.height = window.innerHeight;
+            }
+            resizeCanvasToViewport();
+            window.addEventListener("resize", resizeCanvasToViewport, { passive: true });
+
+            window.addEventListener("mousemove", (event) => {
+                mouseCoordinates.x = event.clientX;
+                mouseCoordinates.y = event.clientY;
+            }, { passive: true });
+
+            window.addEventListener("mouseleave", () => {
+                mouseCoordinates.x = null;
+                mouseCoordinates.y = null;
+            }, { passive: true });
+
+            class Particlenode {
+                constructor() {
+                    this.x = Math.random() * particleCanvas.width;
+                    this.y = Math.random() * particleCanvas.height;
+                    this.size = Math.random() * 2 + 1;
+                    this.baseX = this.x;
+                    this.baseY = this.y;
+                    this.density = (Math.random() * 30) + 10;
+                }
+                draw() {
+                    ctx.fillStyle = "rgba(0, 240, 255, 0.65)";
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                update() {
+                    let dx = mouseCoordinates.x - this.x;
+                    let dy = mouseCoordinates.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    let forceDirectionX = dx / distance;
+                    let forceDirectionY = dy / distance;
+                    let maxDistance = mouseCoordinates.radius;
+                    let force = (maxDistance - distance) / maxDistance;
+                    let directionX = forceDirectionX * force * this.density;
+                    let directionY = forceDirectionY * force * this.density;
+
+                    if (distance < mouseCoordinates.radius) {
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    } else {
+                        if (this.x !== this.baseX) {
+                            let dxBase = this.x - this.baseX;
+                            this.x -= dxBase / 15;
+                        }
+                        if (this.y !== this.baseY) {
+                            let dyBase = this.y - this.baseY;
+                            this.y -= dyBase / 15;
+                        }
+                    }
+                }
+            }
+
+            function initializeParticleGridMatrix() {
+                particlesArray = [];
+                const particleCount = Math.min(120, (window.innerWidth * window.innerHeight) / 9000);
+                for (let i = 0; i < particleCount; i++) {
+                    particlesArray.push(new Particlenode());
+                }
+            }
+            initializeParticleGridMatrix();
+
+            function runCanvasRenderLoopLoop() {
+                ctx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].draw();
+                    particlesArray[i].update();
+                }
+                requestAnimationFrame(runCanvasRenderLoopLoop);
+            }
+            runCanvasRenderLoopLoop();
+
+            // ==========================================================================
+            // B. SCROLL PERFORMANCE & FLOATING DOCK LOGIC
+            // ==========================================================================
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 80) {
+                    dockWrapper.classList.add("dock-condensed");
+                } else {
+                    dockWrapper.classList.remove("dock-condensed");
+                }
+            }, { passive: true });
+
+            // Hamburger Drawer Mechanics
+            if (burgerTrigger && menuLinksVault) {
+                burgerTrigger.addEventListener("click", () => {
+                    const expandedState = burgerTrigger.getAttribute("aria-expanded") === "true";
+                    burgerTrigger.setAttribute("aria-expanded", !expandedState);
+                    burgerTrigger.classList.toggle("active-state");
+                    menuLinksVault.classList.toggle("drawer-open");
+                });
+            }
+
+            // ==========================================================================
+            // C. CREATIVE CLIENT-SIDE APPLICATION ROUTER PIPELINE
+            // ==========================================================================
+            function runActiveViewportRouteTransition(targetHashId) {
+                const destinationSegment = document.querySelector(targetHashId);
+                if (!destinationSegment) return;
+
+                // Safely secure responsive layouts are collapsed prior to transition sequence loops
+                if (menuLinksVault.classList.contains("drawer-open")) {
+                    burgerTrigger.setAttribute("aria-expanded", "false");
+                    burgerTrigger.classList.remove("active-state");
+                    menuLinksVault.classList.remove("drawer-open");
+                }
+
+                // Deactivate alternative views with clean hardware compression classes
+                pageSegmentViews.forEach(view => {
+                    view.classList.add("view-hidden-state");
+                    view.classList.remove("view-frame-activation");
+                });
+
+                // Display active destination layout block node
+                destinationSegment.classList.remove("view-hidden-state");
+                setTimeout(() => {
+                    destinationSegment.classList.add("view-frame-activation");
+                }, 30);
+
+                // Update structural navigation classes & matching accessibility state anchors
+                document.querySelectorAll(".dock-anchor").forEach(anchor => {
+                    if (anchor.getAttribute("href") === targetHashId) {
+                        anchor.classList.add("route-active");
+                        anchor.setAttribute("aria-current", "page");
+                    } else {
+                        anchor.classList.remove("route-active");
+                        anchor.removeAttribute("aria-current");
+                    }
+                });
+
+                // Assistive technology sync relocation positioning shifts
+                destinationSegment.setAttribute("tabindex", "-1");
+                destinationSegment.focus();
+
+                // Synchronize browser native navigation architecture
+                if (window.location.hash !== targetHashId) {
+                    window.location.hash = targetHashId;
+                }
+            }
+
+            // Universal Click Event Interception Hook
+            document.body.addEventListener("click", (event) => {
+                const elementAnchorProxy = event.target.closest("a");
+                if (elementAnchorProxy && elementAnchorProxy.getAttribute("href") && elementAnchorProxy.getAttribute("href").startsWith("#")) {
+                    const destinationPayloadId = elementAnchorProxy.getAttribute("href");
+                    if (destinationPayloadId !== "#master-core-app-runtime") {
+                        event.preventDefault();
+                        runActiveViewportRouteTransition(destinationPayloadId);
+                    }
+                }
+            });
+
+            // Native Popstate Engine Sync
+            window.addEventListener("hashchange", () => {
+                if (window.location.hash) {
+                    runActiveViewportRouteTransition(window.location.hash);
+                } else {
+                    runActiveViewportRouteTransition("#home");
+                }
+            });
+
+            // Initialize Routing Execution Evaluation
+            if (window.location.hash) {
+                runActiveViewportRouteTransition(window.location.hash);
+            } else {
+                runActiveViewportRouteTransition("#home");
+            }
+
+            // ==========================================================================
+            // D. ADVANCED EXPERIENTIAL FORM PROCESSING CONTROLLER
+            // ==========================================================================
+            if (labFormRoot) {
+                labFormRoot.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const fireBtn = labFormRoot.querySelector(".form-submission-button");
+                    
+                    fireBtn.disabled = true;
+                    fireBtn.innerText = "Encrypting Packets...";
+
+                    setTimeout(() => {
+                        formFeedbackStrip.style.display = "flex";
+                        labFormRoot.reset();
+                        
+                        fireBtn.disabled = false;
+                        fireBtn.innerText = "Fire Telemetry Envelope";
+                        
+                        formFeedbackStrip.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                    }, 1600);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
