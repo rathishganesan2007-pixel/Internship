@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architect Portfolio</title>
+    <style>
+        /* 
+           1. COMPACT DESIGN SYSTEM VARIABLES
+         */
+        :root[data-theme="light"] {
+            --bg: #f4f5f7; --surface: rgba(255, 255, 255, 0.8); --card: #ffffff;
+            --text: #0f172a; --muted: #475569; --border: rgba(0, 0, 0, 0.08); --accent: #2563eb;
+        }
+        :root[data-theme="dark"] {
+            --bg: #030712; --surface: rgba(17, 24, 39, 0.8); --card: #1f2937;
+            --text: #f9fafb; --muted: #9ca3af; --border: rgba(255, 255, 255, 0.06); --accent: #38bdf8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: system-ui, sans-serif; }
+        body { background: var(--bg); color: var(--text); min-height: 100vh; display: grid; transition: background 0.3s, color 0.3s; }
+
+        /*
+           2. NAVIGATION / SIDEBAR (Sticky Mobile -> Fixed Desktop)
+           */
+        .sidebar {
+            position: sticky; top: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; background: var(--surface);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { font-size: 1.3rem; font-weight: 800; text-decoration: none; color: var(--text); }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--accent); }
+        .theme-toggle { background: var(--card); border: 1px solid var(--border); border-radius: 50%; cursor: pointer; width: 36px; height: 36px; font-size: 1rem; color: var(--text); }
+
+        /* 
+           3. MAIN LAYOUT ENGINE (2D Grid & Local Flexbox)
+           */
+        .app-container { display: grid; grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 5%; max-width: 1300px; width: 100%; margin: 0 auto; }
+        .panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; }
+
+        /* Hero */
+        .badge { background: rgba(56, 189, 248, 0.15); color: var(--accent); padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 1rem; }
+        .hero-panel h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+        .hero-panel p { color: var(--muted); margin-bottom: 1.5rem; }
+        .action-flex { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .btn { padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-prime { background: var(--accent); color: var(--bg); }
+        .btn-sub { border: 1px solid var(--border); color: var(--text); }
+
+        /* Skills */
+        .skills-panel h2 { font-size: 1.4rem; margin-bottom: 1rem; }
+        .skills-flex { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; }
+        .skill-tag { background: var(--bg); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; }
+
+        /* Works Grid Layout */
+        .works-panel h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .works-panel p { color: var(--muted); margin-bottom: 1.5rem; }
+        .works-subgrid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        .work-item { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .work-img { height: 160px; background-size: cover; background-position: center; }
+        .work-meta { padding: 1rem; }
+        .work-meta p { font-size: 0.9rem; color: var(--muted); margin-top: 0.25rem; }
+
+        /* Contact & Footer */
+        .contact-panel { text-align: center; }
+        .contact-panel h2 { margin-bottom: 0.5rem; }
+        .contact-panel p { color: var(--muted); margin-bottom: 1rem; }
+        .contact-panel a { font-size: 1.4rem; font-weight: 700; color: var(--accent); text-decoration: none; }
+        .app-footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
+
+        /*
+           4. MOBILE-FIRST BREAKPOINTS
+           */
+        @media (min-width: 768px) {
+            .app-container { grid-template-columns: repeat(2, 1fr); }
+            .hero-panel, .works-panel, .contact-panel { grid-column: span 2; }
+            .works-subgrid { grid-template-columns: repeat(2, 1fr); }
+            html { scroll-padding-top: 75px; }
+        }
+
+        @media (min-width: 1024px) {
+            body { grid-template-columns: 260px 1fr; }
+            .sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 260px; height: 100vh; flex-direction: column; justify-content: space-between; align-items: flex-start; padding: 3rem 2rem; border-bottom: none; border-right: 1px solid var(--border); }
+            .nav-links { flex-direction: column; gap: 1.25rem; width: 100%; }
+            .app-container { grid-column-start: 2; grid-template-columns: repeat(3, 1fr); padding: 3rem; }
+            .hero-panel { grid-column: span 2; }
+            .skills-panel { grid-column: span 1; }
+            .works-panel, .contact-panel { grid-column: span 3; }
+            .works-subgrid { grid-template-columns: repeat(3, 1fr); }
+            .app-footer { grid-column-start: 2; }
+            html { scroll-padding-top: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="sidebar">
+        <a href="#" class="logo">core<span>.</span>dev</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">Overview</a></li>
+                <li><a href="#skills">Capabilities</a></li>
+                <li><a href="#projects">Selected Works</a></li>
+                <li><a href="#contact">Get In Touch</a></li>
+            </ul>
+        </nav>
+        <button id="themeBtn" class="theme-toggle" aria-label="Toggle theme">🌓</button>
+    </header>
+
+    <main class="app-container" id="about">
+        <section class="panel hero-panel">
+            <div>
+                <span class="badge">Open to Collaborations</span>
+                <h1>Transforming complex ideas into realities.</h1>
+                <p>I build modular frontend architectures using logical engineering practices, fluid layouts, and responsive CSS systems.</p>
+                <div class="action-flex">
+                    <a href="#projects" class="btn btn-prime">Explore Portfolio</a>
+                    <a href="#contact" class="btn btn-sub">Initiate Project</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel skills-panel" id="skills">
+            <h2>Core Stack</h2>
+            <ul class="skills-flex">
+                <li class="skill-tag">CSS Grid Layout</li>
+                <li class="skill-tag">Flexbox Alignment</li>
+                <li class="skill-tag">Advanced Media Rules</li>
+                <li class="skill-tag">Custom Properties</li>
+                <li class="skill-tag">Semantic HTML5</li>
+                <li class="skill-tag">ES6 JavaScript</li>
+                <li class="skill-tag">React Engine</li>
+            </ul>
+        </section>
+
+        <section class="panel works-panel" id="projects">
+            <h2>Selected Engineering Work</h2>
+            <p>A deep look at structural layouts optimized across standard screens.</p>
+            <div class="works-subgrid">
+                <article class="work-item">
+                    <div class="work-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="work-meta">
+                        <h3>Headless Commerce Hub</h3>
+                        <p>Fully dynamic grid interfaces displaying inventory datasets seamlessly.</p>
+                    </div>
+                </article>
+                <article class="work-item">
+                    <div class="work-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="work-meta">
+                        <h3>Analytical Matrix Workspace</h3>
+                        <p>Asymmetrical data streams rendering complex system parameters smoothly.</p>
+                    </div>
+                </article>
+                <article class="work-item">
+                    <div class="work-img" style="background-image: url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="work-meta">
+                        <h3>Design System Generator</h3>
+                        <p>A fluid interface layout component engine mimicking native mobile frameworks.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel contact-panel" id="contact">
+            <h2>Let's build something remarkable.</h2>
+            <p>Looking for an engineering intern who masters clean CSS architectures?</p>
+            <a href="mailto:hello@architecture.dev">hello@architecture.dev</a>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 Architect Portfolio Submission.</p>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('themeBtn');
+        const root = document.documentElement;
+        
+        // Initial state set to dark mode
+        root.setAttribute('data-theme', 'dark');
+        
+        btn.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme');
+            root.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+        });
+    </script>
+</body>
+</html>
