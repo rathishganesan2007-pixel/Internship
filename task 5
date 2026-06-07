@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CapsArch | Professional Portfolio Hub</title>
+    <style>
+        /* ==========================================================================
+           1. MODERN EXTENSIBLE DESIGN SYSTEM (Custom UI Variables)
+           ========================================================================== */
+        :root {
+            --bg: #f1f5f9;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border: #e2e8f0;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.5; }
+
+        /* ==========================================================================
+           2. STRUCTURE & TYPOGRAPHY LAYOUTS (Sticky Header & Container Frame)
+           ========================================================================== */
+        .navbar {
+            background: var(--surface); border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 100; padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow);
+        }
+        .logo { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: var(--text); }
+        .logo span { color: var(--accent); }
+        .cart-link { text-decoration: none; font-weight: 700; color: var(--accent); background: rgba(37,99,235,0.08); padding: 0.5rem 1rem; border-radius: var(--radius-md); transition: background 0.2s; }
+        .cart-link:hover { background: rgba(37,99,235,0.15); }
+
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; min-height: 75vh; }
+        
+        /* Functional Layout Search and Filter Controls Grid */
+        .controls-bar { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .search-input { padding: 0.6rem 1rem; border: 1px solid var(--border); border-radius: var(--radius-md); width: 100%; max-width: 300px; outline: none; }
+        .search-input:focus { border-color: var(--accent); }
+        .filter-tabs { display: flex; gap: 0.5rem; }
+
+        /* Reusable Form Interactive Action Buttons Utilities */
+        .btn { padding: 0.6rem 1.2rem; border-radius: var(--radius-md); border: none; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; text-decoration: none; display: inline-block; }
+        .btn-prime { background: var(--accent); color: white; }
+        .btn-prime:hover { background: var(--accent-hover); }
+        .btn-sub { background: var(--surface); border: 1px solid var(--border); color: var(--text); }
+        .btn-sub:hover { background: var(--bg); }
+        .btn-sub.active { background: var(--accent); color: white; border-color: var(--accent); }
+        .btn-danger { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+        .btn-danger:hover { background: #ef4444; color: white; }
+        .btn-qty { padding: 0.25rem 0.6rem; font-size: 0.9rem; }
+
+        /* Macro Views Cards & Data Rows Layout Grids */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+        .card-img { height: 180px; background-size: cover; background-position: center; background-color: #e2e8f0; }
+        .card-body { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
+        
+        .split-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; background: var(--surface); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+        .cart-list { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
+        .cart-row { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+        .cart-row:last-of-type { border-bottom: none; }
+
+        .footer { text-align: center; padding: 2rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 5rem; background: var(--surface); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#/" class="logo">Caps<span>Arch</span>.</a>
+        <a href="#/cart" class="cart-link">Cart Management (<span id="cartBadge">0</span>)</a>
+    </header>
+
+    <main class="container" id="viewOutlet"></main>
+
+    <footer class="footer">
+        <p>&copy; 2026 CapsArch Enterprise Architecture Systems Portfolio. Scalable Single-File SPA Pattern.</p>
+    </footer>
+
+    <script>
+        // Mock Product Catalog API payload dataset
+        const PRODUCT_DATABASE = [
+            { id: 201, name: "Modular Poly Shell Chair", price: 189, cat: "Furniture", desc: "Ergonomically sculpted injection-molded shell backing attached to steel architecture components.", img: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=500" },
+            { id: 202, name: "Anodized Task Luminaire", price: 124, cat: "Lighting", desc: "Precision countersunk desktop illumination engine displaying low-latency uniform light patterns.", img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500" },
+            { id: 203, name: "Concrete Geometric Basin", price: 310, cat: "Studio", desc: "Hand-cast structural masonry elements cured inside customized vacuum-sealed template moldings.", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=500" }
+        ];
+
+        // Central Application Core Proxy State Manager
+        const Store = {
+            cart: JSON.parse(localStorage.getItem('caps_portfolio_cart')) || [],
+            filter: "All",
+            searchQuery: "",
+            
+            mutateQty(id, amount) {
+                let match = this.cart.find(item => item.id === id);
+                if (match) {
+                    match.qty += amount;
+                    if (match.qty <= 0) this.cart = this.cart.filter(item => item.id !== id);
+                } else if (amount > 0) {
+                    this.cart.push({ ...PRODUCT_DATABASE.find(p => p.id === id), qty: 1 });
+                }
+                this.commit();
+            },
+            commit() {
+                localStorage.setItem('caps_portfolio_cart', JSON.stringify(this.cart));
+                document.getElementById('cartBadge').innerText = this.cart.reduce((s, i) => s + i.qty, 0);
+                Router.refreshCurrentView();
+            }
+        };
+
+        // UI Virtual View Generation Components Controllers
+        const Views = {
+            catalog(outlet) {
+                const f = Store.filter, q = Store.searchQuery.toLowerCase();
+                const processed = PRODUCT_DATABASE.filter(p => (f === "All" || p.cat === f) && p.name.toLowerCase().includes(q));
+
+                outlet.innerHTML = `
+                    <div class="controls-bar">
+                        <div class="filter-tabs">
+                            ${["All", "Furniture", "Lighting", "Studio"].map(cat => `
+                                <button class="btn btn-sub ${f === cat ? 'active' : ''}" onclick="Store.filter='${cat}'; Store.commit();">${cat}</button>
+                            `).join('')}
+                        </div>
+                        <input type="text" class="search-input" id="searchBox" placeholder="Search parameters..." value="${Store.searchQuery}">
+                    </div>
+                    <div class="products-grid">${processed.map(p => `
+                        <article class="card">
+                            <div class="card-img" style="background-image:url('${p.img}')"></div>
+                            <div class="card-body">
+                                <div style="margin-bottom:1rem;">
+                                    <span style="color:var(--muted); font-size:0.8rem; font-weight:700; text-transform:uppercase;">${p.cat}</span>
+                                    <h3 style="margin-top:0.2rem;">${p.name}</h3>
+                                    <h4 style="color:var(--accent); margin-top:0.4rem;">$${p.price}</h4>
+                                </div>
+                                <div style="display:flex; gap:0.5rem;">
+                                    <a href="#/product?id=${p.id}" class="btn btn-sub" style="flex:1;">Inspect</a>
+                                    <button class="btn btn-prime" style="flex:1;" onclick="Store.mutateQty(${p.id}, 1)">Collect</button>
+                                </div>
+                            </div>
+                        </article>`).join('')}
+                    </div>`;
+                
+                // Keep input field focused during interactive search typing
+                const box = document.getElementById('searchBox');
+                box.focus(); box.setSelectionRange(box.value.length, box.value.length);
+                box.oninput = (e) => { Store.searchQuery = e.target.value; Store.commit(); };
+            },
+
+            detail(outlet, params) {
+                const id = Number(params.get('id'));
+                const p = PRODUCT_DATABASE.find(x => x.id === id);
+                if (!p) return outlet.innerHTML = `<h2>404 Entity Resolution Fault</h2><a href="#/">Return Home</a>`;
+
+                outlet.innerHTML = `
+                    <div class="split-layout">
+                        <div class="card-img" style="background-image:url('${p.img}'); height:320px; border-radius:var(--radius-md);"></div>
+                        <div>
+                            <span style="color:var(--muted); font-weight:700; font-size:0.85rem; text-transform:uppercase;">${p.cat}</span>
+                            <h1 style="margin:0.5rem 0 1rem 0;">${p.name}</h1>
+                            <p style="color:var(--muted); margin-bottom:1.5rem;">${p.desc}</p>
+                            <h2 style="color:var(--accent); margin-bottom:1.5rem;">$${p.price}.00</h2>
+                            <button class="btn btn-prime" onclick="Store.mutateQty(${p.id}, 1)">Add to Order Queue</button>
+                            <a href="#/" class="btn btn-sub" style="margin-left:0.5rem;">Back to Studio Catalog</a>
+                        </div>
+                    </div>`;
+            },
+
+            cart(outlet) {
+                if (!Store.cart.length) return outlet.innerHTML = `<div class="cart-list" style="text-align:center; padding:3rem;"><h2 style="margin-bottom:1rem;">Your batch queue is empty.</h2><a href="#/" class="btn btn-prime">Populate Stack</a></div>`;
+                const total = Store.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+                outlet.innerHTML = `
+                    <div class="cart-list">
+                        <h2 style="margin-bottom:1.5rem;">System Provisioning Queue</h2>
+                        ${Store.cart.map(item => `
+                            <div class="cart-row">
+                                <div>
+                                    <h4>${item.name}</h4>
+                                    <small style="color:var(--muted); font-weight:600;">$${item.price} &times; ${item.qty}</small>
+                                </div>
+                                <div style="display:flex; align-items:center; gap:0.5rem;">
+                                    <button class="btn btn-sub btn-qty" onclick="Store.mutateQty(${item.id}, -1)">-</button>
+                                    <span style="font-weight:700; width:20px; text-align:center;">${item.qty}</span>
+                                    <button class="btn btn-sub btn-qty" onclick="Store.mutateQty(${item.id}, 1)">+</button>
+                                    <button class="btn btn-danger btn-qty" style="margin-left:0.5rem;" onclick="Store.mutateQty(${item.id}, -${item.qty})">✕</button>
+                                </div>
+                            </div>`).join('')}
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:2rem; padding-top:1.5rem; border-top:2px solid var(--border);">
+                            <h3>Aggregate Manifest Value: <span style="color:var(--accent);">$${total}</span></h3>
+                            <button class="btn btn-prime" onclick="alert('Batch Dispatched!'); Store.cart=[]; Store.commit(); window.location.hash='#/'">Checkout Parameters</button>
+                        </div>
+                    </div>`;
+            }
+        };
+
+        // Asynchronous Client-Side Window Routing Node Interface Interceptor
+        const Router = {
+            outlet: document.getElementById('viewOutlet'),
+            refreshCurrentView() {
+                const [path, query] = (window.location.hash || '#/').split('?');
+                const params = new URLSearchParams(query || '');
+                
+                if (path === '#/product') Views.detail(this.outlet, params);
+                else if (path === '#/cart') Views.cart(this.outlet);
+                else Views.catalog(this.outlet);
+            }
+        };
+
+        // Bind core application ecosystem event listener threads
+        window.onhashchange = () => Router.refreshCurrentView();
+        window.onload = () => Store.commit(); // Syncs counts and initiates base route lifecycle rendering
+    </script>
+</body>
+</html>
