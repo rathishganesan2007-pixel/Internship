@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>State To-Do with Stats</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f9; display: grid; place-items: center; min-height: 100vh; margin: 0; }
+        .todo-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 350px; }
+        .input-group { display: flex; gap: 8px; margin-bottom: 1rem; }
+        input[type="text"] { flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        .filters { display: flex; justify-content: space-between; margin-bottom: 1rem; }
+        .filters button { border: none; background: none; color: #666; cursor: pointer; font-weight: bold; }
+        .filters button.active { color: #2563eb; text-decoration: underline; }
+        ul { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+        li { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
+        .done { text-decoration: line-through; color: #aaa; }
+        .del-btn { color: #ef4444; border: none; background: none; cursor: pointer; }
+        
+        /* Footer area layout using Flexbox */
+        .todo-footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #666; padding-top: 10px; border-top: 1px solid #eee; }
+        .clear-btn { background: none; border: none; color: #ef4444; cursor: pointer; font-weight: 600; }
+        .clear-btn:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="todo-card">
+    <h3>Task Manager</h3>
+    <div class="input-group">
+        <input type="text" id="todoInput" placeholder="Add a task...">
+        <button onclick="addTask()">Add</button>
+    </div>
+    <div class="filters" onclick="setFilter(event)">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="active">Active</button>
+        <button data-filter="completed">Done</button>
+    </div>
+    
+    <ul id="todoList"></ul>
+
+    <div class="todo-footer">
+        <span id="taskCounter">0 items left</span>
+        <button class="clear-btn" onclick="clearCompleted()">Clear Completed</button>
+    </div>
+</div>
+
+<script>
+    let todos = JSON.parse(localStorage.getItem('todos')) || [];
+    let currentFilter = 'all';
+
+    function save() {
+        localStorage.setItem('todos', JSON.stringify(todos));
+        render();
+    }
+
+    function addTask() {
+        const input = document.getElementById('todoInput');
+        if (!input.value.trim()) return;
+        todos.push({ id: Date.now(), text: input.value, done: false });
+        input.value = '';
+        save();
+    }
+
+    function setFilter(e) {
+        if (e.target.tagName !== 'BUTTON') return;
+        currentFilter = e.target.dataset.filter;
+        document.querySelectorAll('.filters button').forEach(b => b.classList.toggle('active', b === e.target));
+        render();
+    }
+
+    // Handles row updates via Event Delegation
+    document.getElementById('todoList').onclick = (e) => {
+        const id = Number(e.target.closest('li').dataset.id);
+        if (e.target.classList.contains('del-btn')) {
+            todos = todos.filter(t => t.id !== id);
+        } else {
+            const todo = todos.find(t => t.id === id);
+            todo.done = !todo.done;
+        }
+        save();
+    };
+
+    // Filter array state to keep only uncompleted items
+    function clearCompleted() {
+        todos = todos.filter(t => !t.done);
+        save();
+    }
+
+    function render() {
+        const list = document.getElementById('todoList');
+        
+        // 1. Filter elements for lists display view
+        const filtered = todos.filter(t => 
+            currentFilter === 'all' ? true : 
+            currentFilter === 'active' ? !t.done : t.done
+        );
+        list.innerHTML = filtered.map(t => `
+            <li data-id="${t.id}">
+                <span class="${t.done ? 'done' : ''}" style="cursor:pointer">${t.text}</span>
+                <button class="del-btn">✕</button>
+            </li>
+        `).join('');
+
+        // 2. Compute live counter metrics (Active items remaining)
+        const activeCount = todos.filter(t => !t.done).length;
+        document.getElementById('taskCounter').innerText = `${activeCount} item${activeCount === 1 ? '' : 's'} left`;
+    }
+
+    render();
+</script>
+
+</body>
+</html>
